@@ -50,7 +50,11 @@ import Solutions from "./components/Solutions";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
+import { useRef } from "react";
 function AppContent() {
     const { currentSection } = useNavigation();
 
@@ -185,11 +189,11 @@ function AppContent() {
     };
 
     return (
-        <div className="min-h-screen">
-            <Header />
-            <main>{renderSection()}</main>
-            <Footer />
-        </div>
+      <div className="min-h-screen bg-transparent">
+        <Header />
+        <main>{renderSection()}</main>
+        <Footer />
+      </div>
     );
 }
 

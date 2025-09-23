@@ -32,7 +32,7 @@ export default function Contact() {
       icon: Mail,
       title: 'Email Us',
       content: 'info@zsecuredtech.com',
-      subContent: 'henokgirma@zsecuredtech.com'
+      subContent: 'info@zsecuredtech.com'
     },
     {
       icon: Phone,

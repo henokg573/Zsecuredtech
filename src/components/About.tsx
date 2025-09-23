@@ -45,8 +45,9 @@ export default function About() {
             Why Choose ZSecuredTech?
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We are a team of cybersecurity experts dedicated to protecting businesses 
-            from evolving digital threats with cutting-edge technology and proven methodologies.
+            We are a team of cybersecurity experts dedicated to protecting
+            businesses from evolving digital threats with cutting-edge
+            technology and proven methodologies.
           </p>
         </div>
 
@@ -59,7 +60,9 @@ export default function About() {
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <IconComponent className="w-8 h-8 text-green-400" />
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-3xl font-bold text-white mb-2">
+                  {stat.value}
+                </div>
                 <div className="text-gray-300">{stat.label}</div>
               </div>
             );
@@ -74,31 +77,43 @@ export default function About() {
             </h3>
             <div className="space-y-6">
               <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600">
-                <h4 className="font-semibold text-green-400 mb-2">🎯 Mission</h4>
+                <h4 className="font-semibold text-green-400 mb-2">
+                  🎯 Mission
+                </h4>
                 <p className="text-gray-300">
-                  To provide world-class cybersecurity solutions that enable businesses to operate 
-                  securely and confidently in the digital age, protecting what matters most.
+                  To provide world-class cybersecurity solutions that enable
+                  businesses to operate securely and confidently in the digital
+                  age, protecting what matters most.
                 </p>
               </div>
               <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600">
-                <h4 className="font-semibold text-green-400 mb-2">🔒 Security First</h4>
+                <h4 className="font-semibold text-green-400 mb-2">
+                  🔒 Security First
+                </h4>
                 <p className="text-gray-300">
-                  We believe that security should never be an afterthought. Our proactive approach 
-                  ensures threats are identified and neutralized before they can cause damage.
+                  We believe that security should never be an afterthought. Our
+                  proactive approach ensures threats are identified and
+                  neutralized before they can cause damage.
                 </p>
               </div>
               <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600">
-                <h4 className="font-semibold text-green-400 mb-2">🤝 Partnership</h4>
+                <h4 className="font-semibold text-green-400 mb-2">
+                  🤝 Partnership
+                </h4>
                 <p className="text-gray-300">
-                  We work as an extension of your team, providing transparent communication 
-                  and collaborative solutions tailored to your specific needs.
+                  We work as an extension of your team, providing transparent
+                  communication and collaborative solutions tailored to your
+                  specific needs.
                 </p>
               </div>
               <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600">
-                <h4 className="font-semibold text-green-400 mb-2">📈 Innovation</h4>
+                <h4 className="font-semibold text-green-400 mb-2">
+                  📈 Innovation
+                </h4>
                 <p className="text-gray-300">
-                  Staying ahead of emerging threats through continuous learning, research, 
-                  and implementation of the latest security technologies.
+                  Staying ahead of emerging threats through continuous learning,
+                  research, and implementation of the latest security
+                  technologies.
                 </p>
               </div>
             </div>
@@ -106,8 +121,8 @@ export default function About() {
 
           <div className="relative">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1603201667230-bd139210db18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nJTIwb2ZmaWNlfGVufDF8fHx8MTc1ODEwMTUzOHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Business Team Meeting"
+              src="./image/background.png"
+              alt="Secure Ethiopia"
               className="w-full h-auto rounded-2xl shadow-xl border border-slate-700"
             />
           </div>
@@ -120,7 +135,10 @@ export default function About() {
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
-              <div key={index} className="text-center bg-slate-700/30 rounded-lg p-6 border border-slate-600 hover:bg-slate-700/50 transition-colors">
+              <div
+                key={index}
+                className="text-center bg-slate-700/30 rounded-lg p-6 border border-slate-600 hover:bg-slate-700/50 transition-colors"
+              >
                 <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-green-400">
                   <img
                     src={member.image}
@@ -138,7 +156,9 @@ export default function About() {
 
         {/* Certifications */}
         <div className="mt-20 text-center">
-          <h3 className="text-lg font-semibold text-white mb-8">Our Certifications</h3>
+          <h3 className="text-lg font-semibold text-white mb-8">
+            Our Certifications
+          </h3>
           <div className="flex justify-center items-center space-x-8 opacity-60">
             <div className="px-4 py-2 bg-slate-700 rounded-lg border border-slate-600">
               <span className="font-semibold text-gray-300">CISSP</span>
@@ -154,6 +174,9 @@ export default function About() {
             </div>
             <div className="px-4 py-2 bg-slate-700 rounded-lg border border-slate-600">
               <span className="font-semibold text-gray-300">CISA</span>
+            </div>
+            <div className="px-4 py-2 bg-slate-700 rounded-lg border border-slate-600">
+              <span className="font-semibold text-gray-300">ISO 27001/9001: Lead Auditor and Implementer</span>
             </div>
           </div>
         </div>

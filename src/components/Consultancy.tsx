@@ -1,33 +1,77 @@
-import { CheckCircle, Award, FileText, Shield } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { CheckCircle, Award, FileText, Shield } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useNavigation } from "./NavigationContext";
+
+// Consultancy pages imports
+import ISO9001 from "./consultancy/ISO9001";
+import ISO20000 from "./consultancy/ISO20000";
+import ISO22301 from "./consultancy/ISO22301";
+import ISO31000 from "./consultancy/ISO31000";
 
 export default function Consultancy() {
+  const { navigate } = useNavigation();
+
+  // All consultancy services including their paths
   const consultancyServices = [
     {
       icon: Award,
-      title: 'ISO 9001:2015 - (QMS)',
-      description: 'Quality Management System certification to ensure consistent quality in your products and services.',
-      features: ['Quality Policy Development', 'Process Documentation', 'Internal Audits', 'Management Review']
+      title: "ISO 9001:2015 - (QMS)",
+      path: "iso-9001",
+      description:
+        "Quality Management System certification to ensure consistent quality in your products and services.",
+      features: [
+        "Quality Policy Development",
+        "Process Documentation",
+        "Internal Audits",
+        "Management Review",
+      ],
     },
     {
       icon: Shield,
-      title: 'ISO 20000 - (ITSM)',
-      description: 'IT Service Management certification for delivering effective IT services aligned with business needs.',
-      features: ['Service Strategy', 'Service Design', 'Service Operation', 'Continual Improvement']
+      title: "ISO 20000 - (ITSM)",
+      path: "iso-20000",
+      description:
+        "IT Service Management certification for delivering effective IT services aligned with business needs.",
+      features: [
+        "Service Strategy",
+        "Service Design",
+        "Service Operation",
+        "Continual Improvement",
+      ],
     },
     {
       icon: FileText,
-      title: 'ISO 22301 - (BCMS)',
-      description: 'Business Continuity Management System to ensure business resilience and operational continuity.',
-      features: ['Risk Assessment', 'Business Impact Analysis', 'Continuity Planning', 'Crisis Management']
+      title: "ISO 22301 - (BCMS)",
+      path: "iso-22301",
+      description:
+        "Business Continuity Management System to ensure business resilience and operational continuity.",
+      features: [
+        "Risk Assessment",
+        "Business Impact Analysis",
+        "Continuity Planning",
+        "Crisis Management",
+      ],
     },
     {
       icon: CheckCircle,
-      title: 'ISO 31000 - Risk Management',
-      description: 'Risk Management framework to identify, assess, and mitigate risks across your organization.',
-      features: ['Risk Identification', 'Risk Assessment', 'Risk Treatment', 'Monitoring & Review']
-    }
+      title: "ISO 31000 - Risk Management",
+      path: "iso-31000",
+      description:
+        "Risk Management framework to identify, assess, and mitigate risks across your organization.",
+      features: [
+        "Risk Identification",
+        "Risk Assessment",
+        "Risk Treatment",
+        "Monitoring & Review",
+      ],
+    },
   ];
 
   return (
@@ -39,8 +83,9 @@ export default function Consultancy() {
             ISO Consultancy Services
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Expert guidance for achieving and maintaining ISO certifications. 
-            Our experienced consultants help you implement robust management systems.
+            Expert guidance for achieving and maintaining ISO certifications.
+            Our experienced consultants help you implement robust management
+            systems.
           </p>
         </div>
 
@@ -49,12 +94,19 @@ export default function Consultancy() {
           {consultancyServices.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card key={index} className="bg-slate-800/50 border-slate-600 hover:bg-slate-800/80 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+              <Card
+                key={index}
+                // Pass `false` as second argument to disable scroll to top
+                onClick={() => navigate(service.path, false)}
+                className="bg-slate-800/50 border-slate-600 hover:bg-slate-800/80 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer"
+              >
                 <CardHeader>
                   <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
                     <IconComponent className="w-6 h-6 text-green-400" />
                   </div>
-                  <CardTitle className="text-xl mb-2 text-white">{service.title}</CardTitle>
+                  <CardTitle className="text-xl mb-2 text-white">
+                    {service.title}
+                  </CardTitle>
                   <CardDescription className="text-gray-300">
                     {service.description}
                   </CardDescription>
@@ -62,7 +114,10 @@ export default function Consultancy() {
                 <CardContent>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-gray-400">
+                      <li
+                        key={featureIndex}
+                        className="flex items-center text-sm text-gray-400"
+                      >
                         <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-2"></div>
                         {feature}
                       </li>
@@ -81,50 +136,33 @@ export default function Consultancy() {
               Our Consultancy Process
             </h3>
             <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold">
-                  1
+              {[
+                "Gap Analysis",
+                "Implementation Planning",
+                "System Development",
+                "Certification Support",
+              ].map((step, i) => (
+                <div key={i} className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-green-400 mb-2">
+                      {step}
+                    </h4>
+                    <p className="text-gray-300">
+                      {step === "Gap Analysis" &&
+                        "Comprehensive assessment of your current systems against ISO requirements."}
+                      {step === "Implementation Planning" &&
+                        "Detailed roadmap and timeline for achieving certification goals."}
+                      {step === "System Development" &&
+                        "Hands-on support in developing policies, procedures, and documentation."}
+                      {step === "Certification Support" &&
+                        "Guidance through the certification audit process and ongoing maintenance."}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-green-400 mb-2">Gap Analysis</h4>
-                  <p className="text-gray-300">
-                    Comprehensive assessment of your current systems against ISO requirements.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold">
-                  2
-                </div>
-                <div>
-                  <h4 className="font-semibold text-green-400 mb-2">Implementation Planning</h4>
-                  <p className="text-gray-300">
-                    Detailed roadmap and timeline for achieving certification goals.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold">
-                  3
-                </div>
-                <div>
-                  <h4 className="font-semibold text-green-400 mb-2">System Development</h4>
-                  <p className="text-gray-300">
-                    Hands-on support in developing policies, procedures, and documentation.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 text-white font-semibold">
-                  4
-                </div>
-                <div>
-                  <h4 className="font-semibold text-green-400 mb-2">Certification Support</h4>
-                  <p className="text-gray-300">
-                    Guidance through the certification audit process and ongoing maintenance.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
