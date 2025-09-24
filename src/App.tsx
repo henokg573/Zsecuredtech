@@ -1,6 +1,6 @@
 import {
-    NavigationProvider,
-    useNavigation,
+  NavigationProvider,
+  useNavigation,
 } from "./components/NavigationContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -26,17 +26,14 @@ import VCISOTraining from "./components/training/VCISOTraining";
 import ISOStandardTraining from "./components/training/ISOStandardTraining";
 import NetworkTraining from "./components/training/NetworkTraining";
 import DatabaseTraining from "./components/training/DatabaseTraining";
-// Network Training Subsections
 import CiscoCCNA from "./components/training/CiscoCCNA";
 import CiscoCCIE from "./components/training/CiscoCCIE";
 import CheckpointCCSA from "./components/training/CheckpointCCSA";
 import CompTIANetwork from "./components/training/CompTIANetwork";
 import CompTIASecurity from "./components/training/CompTIASecurity";
-// Database Training Subsections
 import OracleDatabase from "./components/training/OracleDatabase";
 import MicrosoftSQL from "./components/training/MicrosoftSQL";
 import AzureDatabase from "./components/training/AzureDatabase";
-// ISO Standard Training Subsections
 import ISO27001Fundamentals from "./components/training/ISO27001Fundamentals";
 import Resource from "./components/Resource";
 import Downloads from "./components/resources/Downloads";
@@ -54,153 +51,163 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
-import { useRef } from "react";
+import AdminDashboard from "./components/AdminDashboard";
+import AdminLogin from "./components/AdminLogin";
+
+import { useEffect } from "react";
+
 function AppContent() {
-    const { currentSection } = useNavigation();
+  const { currentSection, navigate } = useNavigation();
 
-    const renderSection = () => {
-        switch (currentSection) {
-            case "home":
-                return (
-                    <>
-                        <Hero />
-                        <Services />
-                        <Solutions />
-                        <About />
-                    </>
-                );
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      navigate(hash);
+    }
+  }, [navigate]);
 
-            // Services - All dropdown options
-            case "services":
-                return <Services />;
-            case "threat-detection":
-                return <ThreatDetection />;
-            case "data-encryption":
-                return <DataEncryption />;
-            case "security-auditing":
-                return <SecurityAuditing />;
-            case "infrastructure-security":
-                return <InfrastructureSecurity />;
-            case "incident-response":
-                return <IncidentResponse />;
-            case "security-training":
-                return <SecurityTraining />;
+  const renderSection = () => {
+    switch (currentSection) {
+      case "home":
+        return (
+          <>
+            <Hero />
+            <Services />
+            <Solutions />
+            <About />
+          </>
+        );
 
-            // Consultancy - All dropdown options
-            case "consultancy":
-                return <Consultancy />;
-            case "iso-9001":
-                return <ISO9001 />;
-            case "iso-20000":
-                return <ISO20000 />;
-            case "iso-22301":
-                return <ISO22301 />;
-            case "iso-31000":
-                return <ISO31000 />;
+      // Services
+      case "services":
+        return <Services />;
+      case "threat-detection":
+        return <ThreatDetection />;
+      case "data-encryption":
+        return <DataEncryption />;
+      case "security-auditing":
+        return <SecurityAuditing />;
+      case "infrastructure-security":
+        return <InfrastructureSecurity />;
+      case "incident-response":
+        return <IncidentResponse />;
+      case "security-training":
+        return <SecurityTraining />;
 
-            // Training - All dropdown options including sub-menus
-            case "training":
-                return <Training />;
-            case "cybersecurity-training":
-                return <CybersecurityTraining />;
-            case "cybersecurity-fundamentals":
-                return <CybersecurityFundamentals />;
-            case "cyber-essentials":
-                return <CyberEssentials />;
-            case "cissp-training":
-                return <CISSPTraining />;
-            case "cism-training":
-                return <CISMTraining />;
-            case "vciso-training":
-                return <VCISOTraining />;
-            case "iso-standard-training":
-                return <ISOStandardTraining />;
-            case "network-training":
-                return <NetworkTraining />;
-            case "database-training":
-                return <DatabaseTraining />;
+      // Consultancy
+      case "consultancy":
+        return <Consultancy />;
+      case "iso-9001":
+        return <ISO9001 />;
+      case "iso-20000":
+        return <ISO20000 />;
+      case "iso-22301":
+        return <ISO22301 />;
+      case "iso-31000":
+        return <ISO31000 />;
 
-            // Network Training Subsections
-            case "cisco-ccna":
-                return <CiscoCCNA />;
-            case "cisco-ccie":
-                return <CiscoCCIE />;
-            case "checkpoint-ccsa":
-                return <CheckpointCCSA />;
-            case "comptia-network":
-                return <CompTIANetwork />;
-            case "comptia-security":
-                return <CompTIASecurity />;
+      // Training
+      case "training":
+        return <Training />;
+      case "cybersecurity-training":
+        return <CybersecurityTraining />;
+      case "cybersecurity-fundamentals":
+        return <CybersecurityFundamentals />;
+      case "cyber-essentials":
+        return <CyberEssentials />;
+      case "cissp-training":
+        return <CISSPTraining />;
+      case "cism-training":
+        return <CISMTraining />;
+      case "vciso-training":
+        return <VCISOTraining />;
+      case "iso-standard-training":
+        return <ISOStandardTraining />;
+      case "network-training":
+        return <NetworkTraining />;
+      case "database-training":
+        return <DatabaseTraining />;
+      case "cisco-ccna":
+        return <CiscoCCNA />;
+      case "cisco-ccie":
+        return <CiscoCCIE />;
+      case "checkpoint-ccsa":
+        return <CheckpointCCSA />;
+      case "comptia-network":
+        return <CompTIANetwork />;
+      case "comptia-security":
+        return <CompTIASecurity />;
+      case "oracle-db-certification":
+        return <OracleDatabase />;
+      case "microsoft-sql-certification":
+        return <MicrosoftSQL />;
+      case "azure-db-admin":
+        return <AzureDatabase />;
+      case "iso-27001-fundamentals":
+        return <ISO27001Fundamentals />;
 
-            // Database Training Subsections
-            case "oracle-db-certification":
-                return <OracleDatabase />;
-            case "microsoft-sql-certification":
-                return <MicrosoftSQL />;
-            case "azure-db-admin":
-                return <AzureDatabase />;
+      // Resources
+      case "resource":
+        return <Resource />;
+      case "downloads":
+        return <Downloads />;
+      case "whitepapers":
+        return <WhitePapers />;
 
-            // ISO Standard Training Subsections
-            case "iso-27001-fundamentals":
-                return <ISO27001Fundamentals />;
-            case "iso-9001-implementer":
-                return <ISO9001 />; // Reusing ISO9001 component for implementer
-            case "iso-27001-lead-implementer":
-                return <ISO27001Fundamentals />; // Using fundamentals as placeholder
-            case "iso-27001-lead-auditor":
-                return <ISO27001Fundamentals />; // Using fundamentals as placeholder
+      // News
+      case "news":
+        return <News />;
+      case "latest-news":
+        return <LatestNews />;
+      case "press-releases":
+        return <PressReleases />;
+      case "industry-updates":
+        return <IndustryUpdates />;
+      case "security-alerts":
+        return <SecurityAlerts />;
 
-            // Resources - All dropdown options
-            case "resource":
-                return <Resource />;
-            case "downloads":
-                return <Downloads />;
-            case "whitepapers":
-                return <WhitePapers />;
+      // Main sections
+      case "about":
+        return <About />;
+      case "contact":
+        return <Contact />;
 
-            // News - All dropdown options
-            case "news":
-                return <News />;
-            case "latest-news":
-                return <LatestNews />;
-            case "press-releases":
-                return <PressReleases />;
-            case "industry-updates":
-                return <IndustryUpdates />; // Using IndustryUpdates for industry updates
-            case "security-alerts":
-                return <SecurityAlerts />; // Using SecurityAlerts for security alerts
-
-            // Main navigation sections
-            case "about":
-                return <About />;
-            case "contact":
-                return <Contact />;
-
-            default:
-                return (
-                    <>
-                        <Hero />
-                        <Services />
-                        <Solutions />
-                        <About />
-                    </>
-                );
+      // ✅ Hidden Admin
+      case "admin-login":
+        return <AdminLogin />;
+      case "admin-dashboard":
+        if (sessionStorage.getItem("isAdmin") === "true") {
+          return <AdminDashboard />;
+        } else {
+          navigate("admin-login");
+          return null;
         }
-    };
 
-    return (
-      <div className="min-h-screen bg-transparent">
-        <Header />
-        <main>{renderSection()}</main>
-        <Footer />
-      </div>
-    );
+      default:
+        return (
+          <>
+            <Hero />
+            <Services />
+            <Solutions />
+            <About />
+          </>
+        );
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-transparent">
+      <Header />
+      <main>{renderSection()}</main>
+      <Footer />
+    </div>
+  );
 }
 
 export default function App() {
-    return (
-        <NavigationProvider>
-            <AppContent />
-        </NavigationProvider>
-    );
+  return (
+    <NavigationProvider>
+      <AppContent />
+    </NavigationProvider>
+  );
 }
